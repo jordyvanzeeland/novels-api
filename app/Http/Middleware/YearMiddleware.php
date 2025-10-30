@@ -16,7 +16,7 @@ class YearMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $year = $request->header('year');
+        $year = $request->year ? $request->year : $request->header('year');
 
         if (!$year) {
             return response()->json(['error' => 'No year in header'], 400);
