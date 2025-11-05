@@ -73,9 +73,13 @@ class BooksController extends Controller
 
     public function insertBook(Request $request){
         $validated = $request->validate([
-			'title' => 'required|string|max:255',
+			'name' => 'required|string|max:255',
 			'author' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
 			'readed' => 'nullable|date',
+            'rating' => 'nullable|string|max:255',
+            'en' => 'required|integer|max:255',
+            'current' => 'nullable|integer|max:255',
 		]);
 
         $newBook = Book::create($validated);
@@ -93,9 +97,13 @@ class BooksController extends Controller
 
     public function updateBook(Request $request, int $bookid){
 		$validated = $request->validate([
-			'title' => 'sometimes|required|string|max:255',
-			'author' => 'sometimes|required|string|max:255',
+			'name' => 'required|string|max:255',
+			'author' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
 			'readed' => 'nullable|date',
+            'rating' => 'nullable|string|max:255',
+            'en' => 'required|integer|max:255',
+            'current' => 'nullable|integer|max:255',
 		]);
 
 		$book = Book::findOrFail($bookid);
